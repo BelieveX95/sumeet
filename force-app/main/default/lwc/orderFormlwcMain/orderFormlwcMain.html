@@ -1,0 +1,9 @@
+<template>
+	<lightning-card variant="Narrow">
+
+		<c-order-formlwc onorderdata={handleOrderData}></c-order-formlwc>
+		<c-product-formlwc account-id={accId} po-number={poNum} po-date={poDat} address={addr} account-name={accName}>
+		</c-product-formlwc>
+
+	</lightning-card>
+</template>

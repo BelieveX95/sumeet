@@ -1,0 +1,29 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false">
+    <style>
+		body {
+       		 background: transparent;
+     		 margin: 0;
+     		 padding: 0;
+        	 overflow: hidden;
+        	 width: 100%;
+        
+        }
+        .video-container {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto; /* This ensures the video maintains its aspect ratio */
+        }
+</style> 
+    <div class="video-container" >
+                    <script src="https://static.saleassist.ai/widgets/widget.js"></script>
+                   <script>saleassist.mountWidget({id: "039064b7-23ca-4edd-b295-740c91da5c3c"});</script>
+         </div>
+    
+    
+    
+    
+</apex:page>

@@ -1,0 +1,88 @@
+<template>
+	<lightning-card>
+		<div class="slds-m-around_medium">
+			<c-search-contact onsearch={handleSearch}></c-search-contact>
+		</div>
+
+		<div class="spinner">
+			<template if:true={isLoading}>
+				<lightning-spinner alternative-text="Loading" variant="brand" size="large">
+				</lightning-spinner>
+			</template>
+		</div>
+
+
+		<div class="slds-grid slds-wrap">
+
+			<template if:true={filteredContacts}>
+				<table
+					class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-table_fixed-layout">
+					<thead>
+						<tr class="slds-line-height_reset">
+							<th class="slds-text-title_caps" scope="col">First Name</th>
+							<th class="slds-text-title_caps" scope="col">Name</th>
+							<th class="slds-text-title_caps">Phone</th>
+							<th class="slds-text-title_caps">Email</th>
+							<th class="slds-text-title_caps">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template for:each={filteredContacts} for:item="con">
+							<tr class="slds-hint-parent" key={con.Id}>
+
+								<td>
+									<template if:false={con.isEditing}>
+										{con.FirstName}
+									</template>
+									<template if:true={con.isEditing}>
+										<lightning-input type="text" value={con.LastName} onchange={handleInputChange}
+											name="FirstName" data-record-id={con.Id}></lightning-input>
+									</template>
+								</td>
+
+
+								<td>
+									<template if:false={con.isEditing}>
+										{con.LastName}
+									</template>
+									<template if:true={con.isEditing}>
+										<lightning-input type="text" value={con.LastName} onchange={handleInputChange}
+											name="LastName" data-record-id={con.Id}></lightning-input>
+									</template>
+								</td>
+								<td>
+									<template if:false={con.isEditing}>
+										{con.Phone}
+									</template>
+									<template if:true={con.isEditing}>
+										<lightning-input type="text" value={con.Phone} onchange={handleInputChange}
+											name="Phone" data-record-id={con.Id}></lightning-input>
+									</template>
+								</td>
+								<td>
+									<template if:false={con.isEditing}>
+										{con.Email}
+									</template>
+									<template if:true={con.isEditing}>
+										<lightning-input type="text" value={con.Email} onchange={handleInputChange}
+											name="Email" data-record-id={con.Id}></lightning-input>
+									</template>
+								</td>
+								<td>
+									<template if:false={con.isEditing}>
+										<button class="slds-button slds-button_neutral" onclick={handleEdit} data-record-id={con.Id}>Edit</button>
+										<button class="slds-button slds-button_neutral" onclick={handleDelete} data-record-id={con.Id}>Delete</button>
+									</template>
+									<template if:true={con.isEditing}>
+										<button class="slds-button slds-button_success" onclick={handleSave} data-record-id={con.Id}>Save</button>
+										<button class="slds-button slds-button_outline-brand" onclick={handleCancel} data-record-id={con.Id}>Cancel</button>
+									</template>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</template>
+		</div>
+	</lightning-card>
+</template>

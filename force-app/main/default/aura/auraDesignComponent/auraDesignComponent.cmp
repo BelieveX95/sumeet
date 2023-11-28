@@ -1,0 +1,30 @@
+<aura:component controller="AuraDesignApexClass" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:attribute name="objectName" type="String" />
+    <aura:attribute name="fieldName" type="String" />
+    <aura:attribute name="recordData" type="List" />
+    <aura:attribute name="tableColumns" type="List" />
+    <aura:attribute name="contact" type="String" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <lightning:card title="{!v.objectName}" class="container">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr>
+                    <aura:iteration items="{!v.tableColumns}" var="column">
+                        <th class="slds-text-heading_label">{!column}</th>
+                    </aura:iteration>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.recordData}" var="row">
+                    <tr>
+                        <aura:iteration items="{!row}" var="cell">
+                            <td class="slds-cell-wrap">{!cell}</td>
+                        </aura:iteration>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </lightning:card>
+</aura:component>

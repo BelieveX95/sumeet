@@ -1,0 +1,33 @@
+/* registrationForm.css */
+.container {
+    max-width: 400px;
+    height: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #070000;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: aliceblue;
+    /* Add background image property */
+    background-image: url('https://believe-dev-ed--c.develop.vf.force.com/resource/1701176713000/RegistrationForm?');
+    /* Set background size and other properties as needed */
+    background-size: 444px;
+
+}
+
+.btn-container {
+    margin-top: 30px;
+    display: flex;
+    margin-left: 205px;
+}
+
+h2 {
+    text-align: center;
+    font-weight: 900;
+    font-size: x-large;
+    font-family: cursive;
+}
+
+.margin-px {
+    margin-top: 70px;
+}

@@ -1,0 +1,44 @@
+<template>
+  <lightning-card variant="Narrow" title=" Contact Details" icon-name="standard:contact">
+        <div class="slds-grid slds-grid_align-end">
+          <lightning-button icon-name="utility:add"  label="Add Contact" onclick={handleAddContact}></lightning-button>
+        </div>
+        <br/>
+        Contacts Size: {contactSize} 
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+      <thead>
+        <tr>
+          <th> Name</th>
+          <th>Phone</th>
+          <th> Email</th>
+         
+        </tr>
+        </thead>
+        <tbody>
+          <template for:each={contacts} for:item="con">
+            <tr key={con.Id}>
+              <td> {con.LastName}</td>
+              <td>{con.Phone}</td>
+              <td>{con.Email}</td>
+            </tr>
+          </template>
+
+    <template for:each={conDetails} for:item="contact" for:index="index">
+        <tr key={contact.key}>
+           <td> <lightning-input  name="lastName" placeholder ='LastName' value={contact.lastName} data-index={index} required='' onchange={handleFieldChange}></lightning-input> </td>
+           <td>  <lightning-input  name="phone" placeholder ='phone' value={contact.phone} data-index={index} onchange={handleFieldChange}></lightning-input> </td>
+
+          <td>  <lightning-input  name="email" placeholder ='email' value={contact.email} data-index={index} onchange={handleFieldChange}></lightning-input> </td>
+          <td>  <lightning-button-icon icon-name="utility:delete"  data-index={index} onclick={handleRemoveContact}></lightning-button-icon> </td>
+        </tr>
+    </template>
+  
+        </tbody>
+    </table>
+    <br/>
+            <div class="slds-grid slds-grid_align-end">
+    <lightning-button label="Save" onclick={handleSaveContacts}></lightning-button>
+            </div>
+        </lightning-card>
+
+</template>

@@ -1,0 +1,8 @@
+.element
+{
+    position: fixed; 
+    left: 0px;
+    bottom: 0px;
+    object-fit: cover;
+
+}

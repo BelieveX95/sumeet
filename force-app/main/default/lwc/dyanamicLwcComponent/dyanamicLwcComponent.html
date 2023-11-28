@@ -1,0 +1,35 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-around_medium">
+            <div class="slds-m-bottom_medium">
+                <p>Access Level: {accessLevel}</p>
+                <p>Object: {object}</p>
+            </div>
+            <lightning-card class="container">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr>
+                            <template for:each={labels} for:item="label" >
+                                <th key={label} class="slds-text-heading_label">{label}</th>
+                            </template>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                         <template for:each={labels} for:item="label" >
+                                <tr key={label} class="slds-text-heading_label">{label}</tr>
+                            </template>
+
+                        <!-- <template for:each={records} for:item="record" >
+                            <tr key={record.Id}>
+                                <template for:each={record.dataMap} for:item="fieldValue">
+                                    <td  key={fieldValue} class="slds-cell-wrap">{fieldValue}</td>
+                                </template>
+                            </tr>
+                        </template> -->
+                    </tbody>
+                </table>
+            </lightning-card>
+        </div>
+    </lightning-card>
+</template>

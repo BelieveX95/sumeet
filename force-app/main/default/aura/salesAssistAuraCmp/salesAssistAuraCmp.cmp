@@ -1,0 +1,10 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name="vfHost" type="String"
+                    default="believe-dev-ed--c.visualforce.com"/>
+    
+    <iframe aura:id="vfFrame"
+            src="{!'https://' + v.vfHost + '/apex/videocall2page'}"
+            height ="580" width="330" /> 
+    
+</aura:component>

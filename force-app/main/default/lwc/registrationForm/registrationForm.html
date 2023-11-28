@@ -1,0 +1,18 @@
+<!-- registrationForm.html -->
+<template>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <br/>
+        <lightning-input class="margin-px" label="Name" name="name" value={name} type="text"  onchange={handleNameChange}></lightning-input>
+        <lightning-input label="Mobile" name="mobile" value={mobile} type="tel"  onchange={handleMobileChange}></lightning-input>
+        <lightning-input label="Email" name="email" value={email} type="email"  onchange={handleEmailChange}></lightning-input>
+        <div class="btn-container">
+            <lightning-button label="Cancel" variant="neutral" onclick={handleCancel}></lightning-button>&nbsp;&nbsp;
+
+            <lightning-button label="Submit" variant="brand" onclick={handleSubmit}></lightning-button> 
+
+        </div>
+    </div>
+
+    
+</template>

@@ -1,0 +1,310 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global" 
+                controller='AadharAuthenticationCallouts'>
+    
+    <aura:attribute name="aadNumber" type="String"/>
+    
+    <aura:attribute name="otpNumber" type="String"/>
+    
+    <aura:attribute name="mobileNumber" type="String"/>
+    
+    
+    
+    <aura:attribute name="spinner" type="boolean" default="FALSE"/>
+    
+    <aura:attribute name="firstScreen" type="boolean" default="TRUE"/>
+    
+    <aura:attribute name="secondScreen" type="boolean" default="FALSE"/>
+    
+    <aura:attribute name="thirdScreen" type="boolean" default="FALSE"/>
+    
+    
+    
+    <aura:attribute name="otpWrapper" type="object"/>
+    
+    <aura:attribute name="aadharWrapper" type="object"/>
+    
+    
+    <aura:if isTrue="{!v.firstScreen}">  
+        
+        
+        <lightning:card variant="Narrow" title="Validate Aadhar Number of Contact" iconName="standard:account" >
+            
+            <br/>
+            
+            
+            <lightning:input name="input1" required="true" value="{!v.aadNumber}" label="Enter 12 digit Aadhaar number (UID):" maxlength="12" />
+            
+            <br/>
+            
+            <p class="slds-text-heading_small">
+                
+                Click on below button to validate number from UIAOI <br/>
+                
+                <!--from Government of India website: UIAOI <br/> -->
+                
+                (Unique Identification Authority of India)
+                
+            </p>
+            
+            
+            
+            <br/> <br/>
+            
+            
+            
+            <div>
+                
+                <button class="slds-button slds-button_brand" onclick="{!c.calloutfromJs}">Validate Aadhar Number</button>
+                
+                
+                
+                
+                
+                <button class="slds-button slds-button_brand" onclick="{!c.calloutforOTP}">Authenticate Aadhar Number(with OTP)</button>
+                
+            </div>
+            
+            
+            
+            <aura:if isTrue="{!v.spinner}"> 
+                
+                
+                
+                <div class="exampleHolder">
+                    
+                    <lightning:spinner alternativeText="Loading" size="medium" />
+                    
+                </div>
+                
+            </aura:if> <br/>
+            
+            
+            
+        </lightning:card>
+        
+    </aura:if>
+    
+    
+    
+    
+    
+    <aura:if isTrue="{!v.secondScreen}">
+        
+        <lightning:card variant="Narrow" title="Get Authentication Details of Contact" iconName="standard:account" >
+            
+            <lightning:input name="input1" required="true" value="{!v.otpNumber}" label="Enter OTP:" maxlength="6" />
+            
+            <br/>
+            
+            
+            
+            <lightning:input name="input1" required="true" value="{!v.mobileNumber}" label="Enter Mobile Number:" maxlength="10" />
+            
+            <br/>
+            
+            
+            
+            <p class="slds-text-heading_small">
+                
+                Click on below button to get User Details from UIAOI <br/>
+                
+                <!--from Government of India website: UIAOI <br/> -->
+                
+                (Unique Identification Authority of India)
+                
+            </p>
+            
+            
+            
+            <br/> <br/>
+            
+            
+            
+            <div>
+                
+                <button class="slds-button slds-button_brand" onclick="{!c.calloutforAadharDetails}">Get Aadhar Card Details:</button>
+                
+            </div>  
+            
+            
+            
+            <aura:if isTrue="{!v.spinner}"> 
+                
+                <div class="exampleHolder">
+                    
+                    <lightning:spinner alternativeText="Loading" size="medium" />
+                    
+                </div>
+                
+            </aura:if> <br/>
+            
+            
+            
+        </lightning:card>
+        
+    </aura:if>
+    
+    
+    
+    <aura:if isTrue="{!v.thirdScreen}">
+        
+        <lightning:card variant="Narrow" title="User Details From Aadhar card" iconName="standard:account" >
+            
+            
+            
+            <p class="slds-text-heading_small">
+                
+                Below Aadhar Details are fetched from UIAOI:<br/>
+                
+                <!--from Government of India website: UIAOI <br/> -->
+                
+                (Unique Identification Authority of India)
+                
+            </p>
+            
+            
+            
+            <br/> <br/>
+            
+            <div>
+                
+                <p class="slds-text-heading_small">
+                    
+                    
+                    <table style="width:100%">
+                        
+                        <tr>
+                            
+                            <td>Full Name:</td>
+                            
+                            <td><ui:outputText value="{!v.aadharWrapper.data.full_name}"/></td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            
+                            <td>Aadhar Number:</td>
+                            
+                            <td><ui:outputText value="{!v.aadharWrapper.data.aadhaar_number}"/></td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            
+                            <td>Date of Birth::</td>
+                            
+                            <td><ui:outputText value="{!v.aadharWrapper.data.dob}"/></td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            
+                            <td>Gender:</td>
+                            
+                            <td><ui:outputText value="{!v.aadharWrapper.data.gender}"/></td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            
+                            <td>Country:</td>
+                            
+                            <td><ui:outputText value="{!v.aadharWrapper.data.address.country}"/></td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            
+                            <td>District::</td>
+                            
+                            <td><ui:outputText value="{!v.aadharWrapper.data.address.dist}"/></td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            
+                            <td>State:</td>
+                            
+                            <td><ui:outputText value="{!v.aadharWrapper.data.address.state}"/></td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            
+                            <td>Post Office:</td>
+                            
+                            <td><ui:outputText value="{!v.aadharWrapper.data.address.po}"/></td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            
+                            <td>Postal Code:</td>
+                            
+                            <td><ui:outputText value="{!v.aadharWrapper.data.zip}"/></td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            
+                            <td>Sub District:</td>
+                            
+                            <td><ui:outputText value="{!v.aadharWrapper.data.address.subdist}"/></td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            
+                            <td>Street:</td>
+                            
+                            <td><ui:outputText value="{!v.aadharWrapper.data.address.street}"/></td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            
+                            <td>House:</td>
+                            
+                            <td><ui:outputText value="{!v.aadharWrapper.data.address.house}"/></td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            
+                            <td>Landmark:</td>
+                            
+                            <td><ui:outputText value="{!v.aadharWrapper.data.address.landmark}"/></td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            
+                            <td>Has Image:</td>
+                            
+                            <td><ui:outputText value="{!v.aadharWrapper.data.has_image}"/></td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            
+                            <td>Care of:</td>
+                            
+                            <td><ui:outputText value="{!v.aadharWrapper.data.care_of}"/></td>
+                            
+                        </tr>
+                        
+                        
+                    </table>
+                    
+                </p>
+                
+                
+                
+            </div>             
+            
+        </lightning:card>
+        
+    </aura:if>
+    
+    
+</aura:component>

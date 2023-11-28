@@ -1,0 +1,178 @@
+<template>
+	<lightning-card variant="Narrow">
+
+		<lightning-button variant="brand" label="Compair Names" title="Compair Names" onclick={compareAccountLists}>
+		</lightning-button>
+		<div class="slds-grid slds-wrap">
+			<div class="slds-col slds-large-size_4-of-12 slds-medium-size_1-of-12 slds-size_1-of-12 slds-scrollable_y "
+				style="height:45rem;width:38rem" tabindex="0">
+				<lightning-card title="Account List from Targeted Org" icon-name="standard:account">
+					<lightning-input type="search"  placeholder="Search Account..." value={searchKeyword} onkeyup={handleSearch}>
+					</lightning-input>
+					<br />
+					<template if:true={accountList}>
+						<lightning-layout>
+							<lightning-layout-item size="12">
+								<lightning-datatable key-field="Id" data={accountList} columns={columns}
+									onrowselection={handleRowSelection}></lightning-datatable>
+							</lightning-layout-item>
+						</lightning-layout>
+					</template>
+				</lightning-card>
+			</div>
+
+
+
+			 <div class="slds-col slds-large-size_3-of-12 slds-medium-size_1-of-12 slds-size_1-of-12">
+        <lightning-card variant="Narrow" title="Contacts from Target Org" icon-name="standard:contact">
+            <template if:true={contactList}>
+                <lightning-layout>
+                    <lightning-layout-item size="12">
+                        <lightning-datatable key-field="Id" data={contactList} columns={concolumns}  onsave={savehandle}
+                            hide-checkbox-column="true"></lightning-datatable>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+           
+            <lightning-button variant="brand" label="Add Row" title="Add Row" onclick={createEmptyRow}></lightning-button>
+        </lightning-card>
+
+		 <lightning-card variant="Narrow" title="Opportunity from Target Org" icon-name="standard:opportunity">
+            <template if:true={oppotunityList}>
+                <lightning-layout>
+                    <lightning-layout-item size="12">
+                        <lightning-datatable key-field="Id" data={oppotunityList} columns={oppcolumns}
+                            hide-checkbox-column="true"></lightning-datatable>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+           
+        </lightning-card>
+    </div>
+	</div>
+
+
+	</lightning-card>
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <template>
+	<lightning-card variant="Narrow">
+
+		<lightning-button variant="brand" label="Compair Names" title="Compair Names" onclick={compareAccountLists}>
+		</lightning-button>
+		<div class="slds-grid slds-wrap">
+			<div class="slds-col slds-large-size_4-of-12 slds-medium-size_1-of-12 slds-size_1-of-12 slds-scrollable_y "
+				style="height:45rem;width:38rem" tabindex="0">
+				<lightning-card title="Account List from Targeted Org" icon-name="standard:account">
+					<lightning-input type="search"  placeholder="Search Account..." value={searchKeyword} onkeyup={handleSearch}>
+					</lightning-input>
+					<br />
+					<template if:true={accountList}>
+						<lightning-layout>
+							<lightning-layout-item size="12">
+								<lightning-datatable key-field="Id" data={accountList} columns={columns}
+									onrowselection={handleRowSelection}></lightning-datatable>
+							</lightning-layout-item>
+						</lightning-layout>
+					</template>
+				</lightning-card>
+			</div>
+
+
+
+			 <div class="slds-col slds-large-size_3-of-12 slds-medium-size_1-of-12 slds-size_1-of-12">
+        <lightning-card variant="Narrow" title="Contacts from Target Org" icon-name="standard:contact">
+            <template if:true={contactList}>
+                <lightning-layout>
+                    <lightning-layout-item size="12">
+                        <lightning-datatable key-field="Id" data={contactList} columns={concolumns}
+                            hide-checkbox-column="true"></lightning-datatable>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+           
+            <lightning-button variant="brand" label="Add Row" title="Add Row" onclick={createEmptyRow}></lightning-button>
+        </lightning-card>
+    </div>
+
+			 <div class="slds-col slds-large-size_4-of-12 slds-medium-size_1-of-12 slds-size_1-of-12 slds-scrollable_y "
+				style="height:45rem;width:38rem" tabindex="0">
+				<lightning-card title="Account List from Source Org" icon-name="standard:account">
+
+					<table
+						class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-table_fixed-layout">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Account Name</th>
+								<th>Phone</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template for:each={thisOrgAccountLIst} for:item="acObj" for:index="index">
+								<tr key={acObj.Id}>
+									<td>{acObj.Id}</td>
+									<td>{acObj.Name}</td>
+									<td>{acObj.Phone}</td>
+								</tr>
+							</template>
+
+						</tbody>
+					</table>
+				</lightning-card>
+			</div>
+
+
+			<div class="slds-col slds-large-size_1-of-12 slds-medium-size_1-of-12 slds-size_1-of-12">
+				<lightning-card title="Compared Names" icon-name="standard:account">
+					<template if:true={compairedNames}>
+						<lightning-layout>
+							<lightning-layout-item size="12">
+								<ul class="slds-list_verticle">
+									<template for:each={compairedNames} for:item="name">
+										<li key={name}>{name}</li>
+									</template>
+								</ul>
+							</lightning-layout-item>
+						</lightning-layout>
+					</template>
+					<hr/>
+				</lightning-card>
+			</div>
+		</div>
+
+
+	</lightning-card>
+</template> -->

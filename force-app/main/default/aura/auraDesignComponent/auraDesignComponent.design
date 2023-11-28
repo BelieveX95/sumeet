@@ -1,0 +1,7 @@
+<design:component>
+    <design:attribute name="contact" label="Contact"/>
+    
+    
+    <design:attribute name="objectName" label="Object Name"/>
+    <design:attribute name="fieldName" label="Field Name" />
+</design:component>

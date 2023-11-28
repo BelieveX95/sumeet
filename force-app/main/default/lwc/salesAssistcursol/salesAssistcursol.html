@@ -1,0 +1,18 @@
+<template>
+    <div class="container">
+        <input type="radio" name="slider" id="item-1" data-index="0" onchange={handleRadioChange}/>
+        <input type="radio" name="slider" id="item-2" data-index="1" onchange={handleRadioChange}/>
+        <input type="radio" name="slider" id="item-3" data-index="2" onchange={handleRadioChange}/>
+        <div class="cards">
+            <label class="card" for="item-1" data-id="song-1">
+                <img src="https://www.lohiagroup.com/sites/default/files/about-05_0.jpg" alt="Image 1"/>
+            </label>
+            <label class="card" for="item-2" data-id="song-2">
+                <img src="https://www.lohiagroup.com/sites/default/files/about-03_0.jpg" alt="Image 2"/>
+            </label>
+            <label class="card" for="item-3" data-id="song-3">
+                <img src="https://www.lohiagroup.com/sites/default/files/about-03_0.jpg" alt="Image 3"/>
+            </label>
+        </div>
+    </div>
+</template>

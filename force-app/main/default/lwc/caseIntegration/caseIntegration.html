@@ -1,0 +1,69 @@
+<template>
+	<lightning-card variant="Narrow" title="Cases" icon-name="standard:case">
+
+		  <lightning-radio-group
+        label="Radio Button Group"
+        options={options}
+        value={value}
+        onchange={handleChange}
+        required
+    >
+    </lightning-radio-group>
+		<table
+			class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-table_fixed-layout">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>CaseNumber</th>
+					<th>Origin</th>
+					<th>Status</th>
+					<th>Type</th>
+					<th>CreatedDate</th>
+					<th>Product__c</th>
+					<th>Subject</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<template for:each={caseList} for:item="cs" for:index="index">
+					<tr key={cs.Id} onclick={handleId} data-record-id={cs.Id}>
+						<td>{cs.Id}</td>
+						<td>{cs.CaseNumber}</td>
+						<td>{cs.Origin}</td>
+						<td>{cs.Status}</td>
+						<td>{cs.Type}</td>
+						<td>{cs.CreatedDate}</td>
+						<td>
+							<template if:true={cs.editable}>
+								<lightning-combobox value={cs.Product__c} data-caseid={cs.Id} options={productOptions}
+									onchange={handleProductChange}>
+								</lightning-combobox>
+							</template>
+							<template if:false={cs.editable}>
+								{cs.Product__c} &nbsp;&nbsp;
+								<lightning-button-icon variant="base" size="small"  icon-name="utility:down"
+									alternative-text="opne" data-caseid={cs.Id} onclick={handleEdit}>
+								</lightning-button-icon>
+							</template>
+						</td>
+						<td>
+							<template if:true={cs.editable}>
+								<lightning-input type="text" value={cs.Subject} data-caseid={cs.Id}
+									onchange={handleSubjectChange}></lightning-input>
+							</template>
+							<template if:false={cs.editable}>{cs.Subject}</template>
+						</td>
+						<td>
+							<template if:true={cs.editable}>
+								<lightning-button label="Save" variant="brand" data-caseid={cs.Id} onclick={handleSave}>
+								</lightning-button>
+							</template>
+
+						</td>
+					</tr>
+				</template>
+			</tbody>
+		</table>
+		
+	</lightning-card>
+</template>

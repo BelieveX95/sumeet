@@ -1,0 +1,61 @@
+<template>
+	<lightning-card variant="narrow">
+		<table class="slds-table slds-table_cell-buffer slds-table_bordered">
+
+			<tbody>
+				<template for:each={products} for:item="product">
+					<tr key={product.Id}>
+						<td>
+
+							<button class="favorite-button" aria-label="Add to Favorites"></button>
+
+							</br>
+
+							{product.Name}
+						</td>
+						<td>₹{product.UnitPrice}</td>
+						<td>
+							<lightning-button-group>
+								<template if:true={product.count}>
+									<lightning-button class="smaller-button" variant="Base" label="-" onclick={decrement} data-productid={product.Id}>
+									</lightning-button>
+								</template>
+								<lightning-button class="larg-button" variant="Base" label={product.count}>
+								</lightning-button>
+								<lightning-button class="smaller-button" variant="Base" label="+" onclick={increment}
+									data-productid={product.Id}>
+								</lightning-button>
+
+
+							</lightning-button-group>
+
+						</td>
+						<td style="font-weight: bold;"> ₹{product.totalPrice} </td>
+						<td if:true={Instock}>
+
+
+							<button class="custom-button-basket"  data-productid={product.Id}
+								onclick={handlebasket}> Add To Basket
+							</button> </br>
+							<button
+								class="custom-button-saving "
+								 onclick={HandleSaving}> Saving Available
+							</button>
+						</td>
+
+						<td if:true={outofstock}>
+							<lightning-button variant="brand" label="Alternative avail." onclick={HandleAlternative}
+								class="slds-m-left_x-medium">
+							</lightning-button></br>
+							<lightning-button variant="destructive-text" label="Avail.tracker" onclick={Handletracker}
+								class="slds-m-left_x-medium">
+							</lightning-button>
+
+						</td>
+
+					</tr>
+				</template>
+			</tbody>
+		</table>
+	</lightning-card>
+</template>

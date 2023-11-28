@@ -1,0 +1,22 @@
+<template>
+        <lightning-card variant="Narrow" title="Account Details" icon-name="standard:account">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                        <thead>
+                                <tr>
+                                        <th>Name</th>
+                                      <th>Phone</th>
+                                        <th>Type</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                                <template for:each={accountDetails} for:item="Accdt">
+                                <tr key={Accdt.Id}>
+                                        <td>{Accdt.Name}</td>
+                                        <td>{Accdt.Phone}</td>
+                                        <td>{Accdt.Type}</td>
+                                  </tr>
+                                </template>
+                        </tbody>
+                </table>
+        </lightning-card>
+</template>

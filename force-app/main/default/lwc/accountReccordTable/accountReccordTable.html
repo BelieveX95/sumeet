@@ -1,0 +1,44 @@
+<template>
+	<lightning-card variant="Narrow" title="Account Records" icon-name="standard:account">
+		<div class="slds-m-around_medium">
+			<lightning-input type="text" label="Search" value={searchKey} onchange={handleSearchKeyChange}>
+			</lightning-input>
+		</div>
+		<p> </p>
+		<!-- <div class=" slds-scrollable_y" style="max-height: 500px;"> -->
+		<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"
+			aria-label="Example table of Opportunities with vertical borders">
+			<thead>
+				<tr>
+					<th onclick={sortByName}>
+						<div class="slds-truncate" title="Name">
+							<span class="slds-icon_container slds-icon-utility-up slds-m-right_x-small">
+                  Name
+                  <lightning-icon icon-name="utility:arrowup" size="x-small"></lightning-icon>
+                </span>
+						</div>
+					</th>
+					<th>Phone</th>
+					<th>Type</th>
+					<th>Contact Size </th>
+				</tr>
+			</thead>
+			<tbody>
+				<template for:each={filteredAccounts} for:item="acc">
+					<tr key={acc.Id} onmouseover={handleRowclick} data-record-id={acc.Id}>
+						<td>{acc.Name}</td>
+						<td>{acc.Phone}</td>
+						<td>{acc.Type}</td>
+						<td>{acc.contactSize}</td>
+						<td>
+							<lightning-icon icon-name="action:approval" size="xx-small" alternative-text="Approved"
+								title="Approved">
+							</lightning-icon>
+						</td>
+					</tr>
+				</template>
+			</tbody>
+		</table>
+		</div>
+	</lightning-card>
+</template>

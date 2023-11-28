@@ -1,0 +1,28 @@
+<template>
+    <lightning-card variant="Narrow" title="Opportunity Details" icon-name="standard:opportunity">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>StageName</th>
+                    <th>CloseDate</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={opportunityDetails} for:item="op">
+                    <tr key={op.Id}>
+                        <td>{op.Name}</td>
+                        <td>{op.StageName}</td>
+                        <td>{op.CloseDate}</td>
+                        <td>{op.Amount}</td>
+                    </tr>
+                </template>
+                <tr>
+                    <td colspan="3" style="text-align: right;"><b>Total Amount:</b></td>
+                    <td>{totalAmount}</td>
+                </tr>
+            </tbody>
+        </table>
+    </lightning-card>
+</template>

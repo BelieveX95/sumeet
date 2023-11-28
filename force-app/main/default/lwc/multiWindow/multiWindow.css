@@ -1,0 +1,41 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+ 
+  .progress {
+    display: flex; /* Use flexbox to display bars in a row */
+    height: 20px;
+    margin-bottom: 20px;
+  }
+ 
+  .progress-bar {
+    text-align: center;
+    color: white;
+    line-height: 30px;
+  }
+ 
+  .progress-bar.progress-bar-success {
+    background-color: #5cb85c;
+  }
+ 
+  .progress-bar.progress-bar-warning {
+    background-color: #f0ad4e;
+  }
+ 
+  .progress-bar.progress-bar-danger {
+    background-color: #d9534f;
+  }
+
+  .progress-bar.progress-bar-final {
+    background-color:  aquamarine;
+  }
+
+  .progress-bar {
+    position: relative;
+}
+
+.progress-label {
+    bottom: 500;
+    left: 50%;
+}

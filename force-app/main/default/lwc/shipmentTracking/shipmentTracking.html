@@ -1,0 +1,27 @@
+<template>
+     <div class="slds-align_absolute-center abc">
+        <iframe
+        width="315"
+        height="350"
+        src={videoUrl}
+        frameborder="0"
+        allowfullscreen 
+        allow = "geolocation;camera;microphone;control;autoplay; encrypted-media">
+        </iframe>
+    </div>
+    <br/>
+    
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading..."></lightning-spinner>
+    </template>
+
+    <div class="slds-align_absolute-center">
+        <lightning-button type="Brand" label="Video" onclick={handleCreateMeeting}></lightning-button>&nbsp;
+        <lightning-button type="success" label="Audio" onclick={handleCreateMeeting}></lightning-button>&nbsp;
+        <lightning-button type="success" label="Schedual" onclick={handleShedual}></lightning-button>
+
+    </div> 
+
+    <!-- <c-sales-widget></c-sales-widget> -->
+
+</template>

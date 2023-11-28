@@ -1,0 +1,23 @@
+<aura:component controller="CSVUploadController"  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+  
+    <!-- 'parentId' Aura Attribute for store the Id for Parent Record where we are attach our file --> 
+    <aura:attribute name="parentId" type="Id" default="00128000002KuXUAA0" />
+    <!-- 'fileName' attribute for display the selected file name --> 
+    <aura:attribute name="fileName" type="String" default="No File Selected.." />
+    <aura:attribute name="csvData" type="List" />
+    
+    <div class="slds-m-around_medium slds-align_absolute-center">
+        <!-- Lightning Input with file type and on file change call the 'handleFilesChange' controller -->
+        <lightning:input aura:id="fuploader" onchange="{!c.handleFilesChange}" type="file" name="file" accept=".csv" multiple="false"/>
+    </div>
+    <br/>
+    <div class="slds-m-around_medium slds-align_absolute-center">
+        <lightning:datatable columns="{! v.columns }" data="{! v.csvData }" keyField="id" hideCheckboxColumn="true"/> 
+    </div>
+    <br/>
+    <div class="slds-m-around_medium slds-align_absolute-center">
+        
+        <lightning:button label="Save" onclick="{!c.handleSave}" variant="brand" class="slds-m-top--medium"/>
+        <lightning:button label="Save And Process" onclick="{!c.handleSaveandProcess}" variant="brand" class="slds-m-top--medium" />
+    </div>   
+</aura:component>

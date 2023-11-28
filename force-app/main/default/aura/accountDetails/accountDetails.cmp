@@ -1,0 +1,34 @@
+<!--<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" 
+                controller ="accountDetails">
+    
+    <aura:attribute name="recordId" type="Id" />
+    
+    
+    <aura:attribute name="accountDetails" type="Account" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    
+    <div>
+        <aura:if isTrue="{!not(empty(v.accountDetails))}">
+            <p>Name: {!v.accountDetails.Name}</p>
+            <p>Type: {!v.accountDetails.Type}</p>
+        </aura:if>
+        <aura:if isTrue="{!empty(v.accountDetails)}">
+            <p>No Account details found.</p>
+        </aura:if>
+    </div>
+    
+</aura:component>
+-->
+   <aura:component implements="force:hasRecordId,flexipage:availableForAllPageTypes">
+        <aura:attribute name="recordId" type="String" />
+
+    <!-- handlers-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:card title="Lightning Aura Component">
+        <div class="slds-p-around_small">
+            Current Record ID in Lightning Aura Component: <strong>{!v.recordId}</strong> <br/><br/>
+        </div>
+    </lightning:card>
+</aura:component>

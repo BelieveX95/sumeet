@@ -1,0 +1,64 @@
+/* Add to basket button css */
+.custom-button-basket {
+display: inline-block;
+background-color: #BA0517;
+color: #f4f7f9;
+padding: 10px 30px;
+border-radius: 50px;
+border: 1px solid #BA0517;
+cursor: pointer;
+}
+
+/* Add to saving button css */
+.custom-button-saving {
+display: inline-block;
+background-color: rgb(210, 242, 248);
+color: #003366;
+padding: 10px 20px;
+border-radius: 50px; 
+cursor: pointer;
+border: 1px solid #003366;
+margin-top: 5px;
+}
+
+/* for count decrease and increse button(-/+) */
+.smaller-button{
+	font-size: 15px;
+	padding: 1px 4px;
+  border: 1px solid black;
+  color: black;
+}
+
+/* for count button */
+.larg-button{
+	font-size: 15px;
+	padding: 1px 15px;
+  border: 1px solid black;
+  color: black;
+  text-emphasis-color: black;
+}
+
+
+/* customStyles for .favorite-button */
+.favorite-button {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.favorite-button::before {
+  content: "\2665";
+  font-size: 24px;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: color 0.3s ease-in-out;
+  -webkit-text-stroke: 1px black; 
+}
+.favorite-button:hover::before {
+  color: red;
+}

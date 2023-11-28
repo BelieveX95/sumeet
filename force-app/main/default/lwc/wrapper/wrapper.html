@@ -1,0 +1,13 @@
+<!-- accountContactOpportunityWrapper.html -->
+<template>
+  <lightning-card title="Account, Contact, and Opportunity Data">
+      <template if:true={data}>
+          <lightning-datatable
+              data={data}
+              columns={columns}
+              key-field="acc.Id"
+          >
+          </lightning-datatable>
+      </template>
+  </lightning-card>
+</template>

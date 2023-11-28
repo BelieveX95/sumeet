@@ -1,0 +1,14 @@
+<template>
+    <lightning-card  title="Parent">
+
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input type="text" value = {ShowValue} label="Enter some text" onkeyup={handlekeyup} ></lightning-input>
+        </div>
+        <br/>
+        Value:- {ShowValue}
+<br/>
+<c-lwc-child-comp  onreset={handleClearValue}></c-lwc-child-comp>
+    </lightning-card>
+
+
+</template>

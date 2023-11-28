@@ -1,0 +1,14 @@
+<aura:component  controller="accountDetails">
+    <aura:attribute name="opportunityId" type="Id" />
+    <aura:attribute name="newAccount" type="Account" default="{'sobjectType': 'Account'}" />
+
+    <div class="slds-box">
+        <h2 class="slds-text-heading_medium">Create Account</h2>
+
+        <lightning:input label="Account Name" value="{!v.newAccount.Name}" required="true" />
+
+        <div class="slds-m-top_medium">
+            <lightning:button label="Save" variant="brand" onclick="{!c.createAccount}" />
+        </div>
+    </div>
+</aura:component>

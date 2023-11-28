@@ -1,0 +1,77 @@
+<template>
+	<div class="slds-m-around_medium">
+		<div class="slds-box slds-theme_default">
+			<header class="slds-box_header">
+			</header>
+			<div class="slds-box_body">
+				<lightning-record-edit-form object-api-name="Case" onsuccess={handleSuccess} onsubmit={handleSubmit}>
+					<lightning-messages></lightning-messages>
+
+					<div class="slds-grid slds-gutters slds-wrap">
+						<div class="slds-col slds-large-size_6-of-12 slds-medium-size_1-of-12 slds-size_1-of-12">
+							<lightning-input-field field-name="AccountId"></lightning-input-field>
+						</div>
+
+						<div class="slds-col slds-large-size_6-of-12 slds-medium-size_1-of-12 slds-size_1-of-12">
+							<lightning-input-field field-name="ContactId"></lightning-input-field>
+						</div>
+						<div class="slds-col ">
+							<lightning-input-field field-name="Subject"></lightning-input-field>
+						</div>
+						<div class="slds-col ">
+							<lightning-input-field field-name="Type"></lightning-input-field>
+						</div>
+						<div class="slds-col ">
+							<lightning-input-field field-name="Reason"></lightning-input-field>
+						</div>
+						<div class="slds-col">
+							<lightning-input-field field-name="Status" required></lightning-input-field>
+						</div>
+						<div class="slds-col">
+							<lightning-input-field field-name="Origin" required></lightning-input-field>
+						</div>
+					</div>
+					<div class="slds-col">
+						<lightning-input-field field-name="Description"></lightning-input-field>
+					</div>
+					<div class="slds-col">
+						<input type="file" accept=".jpg, .jpeg, .png, .pdf" onchange={handleFileChange}></input>
+						
+
+
+					</div>
+					<table class="slds-table slds-table_bordered slds-table_cell-buffer">
+						<thead>
+							<tr class="slds-text-title_caps">
+								<th scope="col">File Name</th>
+								<th scope="col">Type</th>
+								<th scope="col">Size</th>
+								<th scope="col">Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template for:each={detailsList} for:item="file">
+								<tr key={file.id} >
+									<td>{file.name}</td>
+									<td>{file.type}</td>
+									<td>{file.size} bytes</td>
+									<td>
+										<button id="viewButton" style="display: none;" onclick={openSelectedFile}>View File</button>
+
+										<lightning-button-icon variant="border-filled" icon-name="utility:delete"
+											title="Delete" onclick={handleDeleteFile} data-file-id={file.id}>
+										</lightning-button-icon>
+
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+					<div class="slds-m-top_medium">
+						<lightning-button type="submit" label="Create Case" variant="brand"></lightning-button>
+					</div>
+				</lightning-record-edit-form>
+			</div>
+		</div>
+	</div>
+</template>

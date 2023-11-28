@@ -1,0 +1,172 @@
+<template>
+	<lightning-card>
+		<div>
+			<p style="font-size: 30px; text-align: center;">New Orders</p>
+		</div>
+		<hr />
+		<div>
+			<p style="font-size: 20px; margin-left:5px;">Order Details</p>
+		</div>
+		<lightning-record-edit-form object-api-name={objectApiName}>
+			<div class="slds-col slds-size_6-of-12">
+				<table>
+					<thead>
+						<tr>
+							<td colspan="4">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>
+								<p>Account</p>
+							</td>
+							<td>
+								<lightning-input-field variant="label-hidden" value={accountId} field-name={AccountLookup}
+									onchange={handleAccountLookup}>
+								</lightning-input-field>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>
+								<p>PO Number</p>
+							</td>
+							<td>
+								<lightning-input-field variant="label-hidden" value={poNumber} field-name={PoNumber}
+									onchange={handlePoNumber} required="true">
+								</lightning-input-field>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>
+								<p>PO Date</p>
+							</td>
+							<td>
+								<lightning-input-field variant="label-hidden" value={poDate} field-name={PoDate}
+									onchange={handlePoDate}>
+								</lightning-input-field>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>
+								<p style="margin-top: -127px;">Billing Address</p>
+							</td>
+							<td>
+								<lightning-input-field variant="label-hidden" value={billingAddress} field-name={BillingAddress}
+									onchange={handleBillingAddress}>
+								</lightning-input-field>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>
+								<p style="margin-top: -127px;">Shipping Address</p>
+							</td>
+							<td>
+								<lightning-input-field variant="label-hidden" value={shippingAddress} field-name={ShippingAddress}
+									onchange={handleShippingAddress}>
+								</lightning-input-field>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>
+								<p>Product Type</p>
+							</td>
+							<td>
+								<lightning-radio-group name="radioGroup" options={radioOptions} value={radioValue}
+									onchange={handleRadioChange}></lightning-radio-group>
+
+							</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div class="slds-col slds-size_12-of-12">
+				<hr />
+				<table>
+					<thead>
+						<tr>
+							<td colspan="7">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>ROUND/SECTION</td>
+							<td>&nbsp;</td>
+							<td>PRODUCT</td>
+							<td>&nbsp;</td>
+							<td>QUANTITY</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>
+								<lightning-combobox name="progress" value={picklistValue} options={picklistOptions}
+									onchange={handlePicklistChange}>
+								</lightning-combobox>
+							</td>
+							<td>&nbsp;</td>
+							<td>
+								<lightning-combobox name="progress" value={selectedProduct} options={productOptions}
+									onchange={handleProductChange}>
+								</lightning-combobox>
+							</td>
+							<td>&nbsp;</td>
+							<td>
+								<lightning-input type="text" placeholder="0" onchange={handleQuantity}>
+								</lightning-input>
+								<!-- <lightning-input-field variant="label-hidden" field-name={OrderQuantity} >
+								</lightning-input-field> -->
+							</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="7">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="5">&nbsp;</td>
+							<th colspan="2">
+								Total Quantity: {quantity}
+							</th>
+						</tr>
+
+					</thead>
+				</table>
+				<hr />
+				<table>
+					<thead>
+						<tr>
+							<!-- <td>&nbsp;</td>
+							<td style="float:left;">
+								<lightning-button label="Add Item" title="Non-primary action" onclick={handleAddItem}
+									class="slds-m-left_x-small"></lightning-button>
+							</td> -->
+							<td style="float:right;">
+								<lightning-button label="Cancel" title="Non-primary action" onclick={handleCancel}
+									class="slds-m-left_x-small"></lightning-button>
+								<lightning-button variant="Brand" label="Save" title="Primary action"
+									onclick={handleSave} class="slds-m-left_x-small"></lightning-button>
+							</td>
+							<td>&nbsp;</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</lightning-record-edit-form>
+	</lightning-card>
+</template>

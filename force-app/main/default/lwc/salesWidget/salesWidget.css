@@ -1,0 +1,46 @@
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-item {
+    flex: 0 0 100%;
+    opacity: 1; /* Initial opacity for all items */
+    transition: opacity 0.5s; /* Transition for opacity */
+}
+
+.fading-item {
+    opacity: 0.5; /* Reduced opacity for fading items */
+}
+
+.centered-item {
+    transform: scale(1.1); /* Slightly larger scale for centered item */
+}
+
+iframe {
+    width: 100%;
+    height: 300px;
+}
+
+.carousel-controls {
+    margin-top: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
